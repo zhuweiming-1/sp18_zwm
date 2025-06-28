@@ -81,6 +81,9 @@ public class IntList {
      */
 
     public static IntList dcatenate(IntList A, IntList B) {
+        if (A == null) {
+            return B;
+        }
         IntList p = A;
         while (p.rest != null) {
             p = p.rest;
@@ -94,6 +97,9 @@ public class IntList {
      * * elements of B.  May NOT modify items of A.  Use 'new'.
      */
     public static IntList catenate(IntList A, IntList B) {
+        if (A == null) {
+            return B;
+        }
         IntList newList = new IntList(A.first, null);
         IntList p = newList;
         while (A.rest != null) {
@@ -206,8 +212,7 @@ public class IntList {
 
     @Override
     /** Outputs the IntList as a String. You are not expected to read
-     * or understand this method. */
-    public String toString() {
+     * or understand this method. */ public String toString() {
         Formatter out = new Formatter();
         String sep;
         sep = "(";
