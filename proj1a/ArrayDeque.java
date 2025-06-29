@@ -1,7 +1,8 @@
 public class ArrayDeque<T> {
     private T[] items;
     private int size = 0;
-    private final int initCapacity = 10;
+    private final int initCapacity = 8;
+
     public ArrayDeque() {
         items = (T[]) new Object[initCapacity];
     }
@@ -17,15 +18,25 @@ public class ArrayDeque<T> {
         items = temp;
     }
 
+    private void adjustCapacity() {
+        double usage = size * 1.0 / items.length;
+        double threshold = 0.25;
+        int expansionFactor = 2;
+        if (items.length > initCapacity && usage <= threshold) {
+            int capacity = (int) Math.floor(items.length * threshold);
+            resize(capacity);
+        } else if (size == items.length) {
+            resize(size * expansionFactor);
+        }
+    }
+
     /**
      * 将类型为 T 的元素添加到双端队列的前端。
      *
      * @param item
      */
     public void addFirst(T item) {
-        if (size == items.length) {
-            resize(size * 2);
-        }
+        adjustCapacity();
         for (int i = size; i > 0; i--) {
             items[i] = items[i - 1];
         }
@@ -39,9 +50,7 @@ public class ArrayDeque<T> {
      * @param item
      */
     public void addLast(T item) {
-        if (size == items.length) {
-            resize(size * 2);
-        }
+        adjustCapacity();
         items[size++] = item;
     }
 
@@ -78,6 +87,7 @@ public class ArrayDeque<T> {
      * @return item
      */
     public T removeFirst() {
+        adjustCapacity();
         if (isEmpty()) {
             return null;
         }
@@ -95,11 +105,12 @@ public class ArrayDeque<T> {
      * @return item
      */
     public T removeLast() {
+        adjustCapacity();
         if (isEmpty()) {
             return null;
         }
-        T item = items[size];
-        items[--size] = null;
+        T item = items[--size];
+        items[size] = null;
         return item;
     }
 
