@@ -93,7 +93,11 @@ public class ArrayDeque<T> {
         }
         T item = items[0];
         for (int i = 0; i < size; i++) {
-            items[i] = items[i + 1];
+            if (i + 1 < size) {
+                items[i] = items[i + 1];
+            } else {
+                items[i] = null;
+            }
         }
         size--;
         return item;

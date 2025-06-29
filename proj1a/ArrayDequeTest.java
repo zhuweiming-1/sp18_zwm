@@ -1,6 +1,9 @@
 import org.junit.Before;
 import org.junit.Test;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class ArrayDequeTest {
     ArrayDeque<Integer> a = null;
 
@@ -43,8 +46,19 @@ public class ArrayDequeTest {
     public void testAdjustCapacity() {
         a.addLast(9);
 
+        List<Integer> l = new ArrayList<>();
+        l.add(2);
+        l.removeFirst();
+
         for (int i = 0; i < 7; i++) {
             a.removeLast();
+        }
+
+        a.addLast(9);
+        a.addLast(8);
+        a.addLast(8);
+        for (int i = 0; i < 6; i++) {
+            a.removeFirst();
         }
     }
 }
