@@ -21,9 +21,6 @@ public class ArrayDequeTest {
         a.removeFirst();
         a.removeLast();
 
-
-//        Assert.assertArrayEquals(exp, a.toArray());
-//        Assert.assertEquals(exp, a.toArray());
     }
 
     @Test
@@ -32,6 +29,5 @@ public class ArrayDequeTest {
         a.addLast(5);
         a.addLast(6);
         Integer[] exp = {4, 5, 6};
-//        Assert.assertArrayEquals(exp, a.toArray());
     }
 }

@@ -1,9 +1,9 @@
 public class ArrayDeque<T> {
     private T[] items;
     private int size = 0;
-
+    private final int initCapacity = 10;
     public ArrayDeque() {
-        items = (T[]) new Object[10];
+        items = (T[]) new Object[initCapacity];
     }
 
     /**

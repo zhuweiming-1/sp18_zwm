@@ -122,7 +122,7 @@ public class LinkedListDequeTest {
     }
 
     @Test
-    public void testGetRecursive(){
+    public void testGetRecursive() {
         LinkedListDeque<Integer> lld = new LinkedListDeque<>();
         lld.addLast(4);
         lld.addLast(5);
@@ -132,10 +132,4 @@ public class LinkedListDequeTest {
         Assert.assertEquals(4, (long) lld.getRecursive(0));
         Assert.assertEquals(6, (long) lld.getRecursive(2));
     }
-
-/*    public static void main(String[] args) {
-        System.out.println("Running tests.\n");
-        addIsEmptySizeTest();
-        addRemoveTest();
-    }*/
 }
