@@ -32,7 +32,7 @@ public class LinkedListDeque<T> {
         Node<T> p = new Node<>();
         p.value = item;
         p.next = sentinel.next;
-        p.next.prev = sentinel;
+        p.next.prev = p;
         p.prev = sentinel;
         sentinel.next = p;
         size++;
@@ -47,7 +47,7 @@ public class LinkedListDeque<T> {
         Node<T> p = new Node<>();
         p.value = item;
         p.prev = sentinel.prev;
-        p.prev.next = sentinel;
+        p.prev.next = p;
         p.next = sentinel;
         sentinel.prev = p;
         size++;
@@ -128,6 +128,7 @@ public class LinkedListDeque<T> {
         Node<T> p = sentinel.next;
         while (c < index) {
             p = p.next;
+            c++;
         }
         return p.value;
     }

@@ -85,6 +85,7 @@ public class ArrayDeque<T> {
         for (int i = 0; i < size; i++) {
             items[i] = items[i + 1];
         }
+        size--;
         return item;
     }
 
@@ -98,7 +99,7 @@ public class ArrayDeque<T> {
             return null;
         }
         T item = items[size];
-        items[size--] = null;
+        items[--size] = null;
         return item;
     }
 

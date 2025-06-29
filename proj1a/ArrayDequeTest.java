@@ -1,4 +1,3 @@
-import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -7,7 +6,7 @@ public class ArrayDequeTest {
 
     @Before
     public void initArrayDeque() {
-//        a = new ArrayDeque<>(3);
+        a = new ArrayDeque<>();
     }
 
     @Test
@@ -15,7 +14,13 @@ public class ArrayDequeTest {
         a.addFirst(3);
         a.addFirst(2);
         a.addFirst(1);
-        Integer[] exp = {1, 2, 3};
+        a.addLast(4);
+        a.addLast(5);
+        a.addLast(6);
+
+        a.removeFirst();
+        a.removeLast();
+
 
 //        Assert.assertArrayEquals(exp, a.toArray());
 //        Assert.assertEquals(exp, a.toArray());
