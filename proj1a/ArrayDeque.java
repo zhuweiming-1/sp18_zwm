@@ -6,11 +6,6 @@ public class ArrayDeque<T> {
         items = (T[]) new Object[10];
     }
 
-    public ArrayDeque(int capacity) {
-        items = (T[]) new Object[capacity];
-    }
-
-
     /**
      * 调整ArrayDeque的容量。
      *
@@ -118,9 +113,5 @@ public class ArrayDeque<T> {
             return null;
         }
         return items[index];
-    }
-
-    public T[] toArray() {
-        return items;
     }
 }

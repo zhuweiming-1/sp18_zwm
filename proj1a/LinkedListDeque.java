@@ -1,3 +1,4 @@
+
 public class LinkedListDeque<T> {
     private static class Node<T> {
         Node<T> prev = null;
@@ -113,7 +114,8 @@ public class LinkedListDeque<T> {
     }
 
     /**
-     * 获取给定索引处的元素，其中 0 表示队首，1 表示下一个元素，依此类推。如果不存在该元素，则返回 null。不得修改双端队列！
+     * 获取给定索引处的元素，其中 0 表示队首，1 表示下一个元素，依此类推。
+     * 如果不存在该元素，则返回 null。不得修改双端队列！
      *
      * @param index
      * @return item
@@ -128,5 +130,25 @@ public class LinkedListDeque<T> {
             p = p.next;
         }
         return p.value;
+    }
+
+    /**
+     * 与 get 相同，但使用递归。
+     *
+     * @param index
+     * @return item
+     */
+    public T getRecursive(int index) {
+        if (index >= size) {
+            return null;
+        }
+        return getRecursiveHelper(sentinel.next, index);
+    }
+
+    private T getRecursiveHelper(Node<T> p, int index) {
+        if (index == 0) {
+            return p.value;
+        }
+        return getRecursiveHelper(p.next, index - 1);
     }
 }
