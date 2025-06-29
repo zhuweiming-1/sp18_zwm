@@ -1,10 +1,12 @@
 public class ArrayDeque<T> {
     private T[] items;
     private int size = 0;
-    private final int initCapacity = 8;
+    private static final int INIT_CAPACITY = 8;
+    private static final double REDUCE_THRESHOLD = 0.25;
+    private static final double ADD_THRESHOLD = 0.75;
 
     public ArrayDeque() {
-        items = (T[]) new Object[initCapacity];
+        items = (T[]) new Object[INIT_CAPACITY];
     }
 
     /**
@@ -20,13 +22,12 @@ public class ArrayDeque<T> {
 
     private void adjustCapacity() {
         double usage = size * 1.0 / items.length;
-        double threshold = 0.25;
         int expansionFactor = 2;
-        if (items.length > initCapacity && usage <= threshold) {
-            int capacity = (int) Math.floor(items.length * threshold);
+        if (items.length > INIT_CAPACITY && usage <= REDUCE_THRESHOLD) {
+            int capacity = (int) Math.floor(items.length * REDUCE_THRESHOLD);
             resize(capacity);
-        } else if (size == items.length) {
-            resize(size * expansionFactor);
+        } else if (size >= items.length * ADD_THRESHOLD) {
+            resize(items.length * expansionFactor);
         }
     }
 
