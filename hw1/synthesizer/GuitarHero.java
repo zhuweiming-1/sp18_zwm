@@ -2,6 +2,7 @@ package synthesizer;
 
 import edu.princeton.cs.introcs.StdAudio;
 import edu.princeton.cs.introcs.StdDraw;
+
 import java.util.HashMap;
 import java.util.Map;
 
@@ -12,7 +13,7 @@ public class GuitarHero {
     public static void main(String[] args) {
 
         for (int i = 0; i < 37; i++) {
-            guitarStrings.put(i, new synthesizer.GuitarString(440.0 * Math.pow(2, (i - 24.0) / 12.0)));
+            guitarStrings.put(i, new GuitarString(440.0 * Math.pow(2, (i - 24.0) / 12.0)));
         }
         GuitarString stringA = guitarStrings.get(0);
         while (true) {

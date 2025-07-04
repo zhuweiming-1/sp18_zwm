@@ -35,7 +35,7 @@ public class ArrayRingBuffer<T> extends AbstractBoundedQueue<T> {
         fillCount += 1;
     }
 
-    int update(int x) {
+    private int update(int x) {
         if (x + 1 == capacity) {
             return 0;
         } else {
@@ -70,9 +70,6 @@ public class ArrayRingBuffer<T> extends AbstractBoundedQueue<T> {
         return rb[first];
     }
 
-    T[] toArray() {
-        return rb;
-    }
 
 
     // When you get to part 5, implement the needed code to support iteration.
