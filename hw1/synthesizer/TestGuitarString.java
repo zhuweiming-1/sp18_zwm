@@ -2,17 +2,21 @@ package synthesizer;
 
 /* Since this test is part of a package, we have to import the package version of StdAudio. */
 /* Don't worry too much about this, we'll get there in due time. */
+
 import edu.princeton.cs.introcs.StdAudio;
 
 import org.junit.Test;
+
 import static org.junit.Assert.*;
 
-/** Tests the GuitarString class.
- *  @author Josh Hug
+/**
+ * Tests the GuitarString class.
+ *
+ * @author Josh Hug
  */
 
 public class TestGuitarString {
-/*    @Test
+    @Test
     public void testPluckTheAString() {
         double CONCERT_A = 440.0;
         GuitarString aString = new GuitarString(CONCERT_A);
@@ -21,40 +25,38 @@ public class TestGuitarString {
             StdAudio.play(aString.sample());
             aString.tic();
         }
-    }*/
+    }
 
-/*
     @Test
     public void testTic() {
-        // Create a GuitarString of frequency 11025, which
-        // is an ArrayRingBuffer of length 4. 
+        // 创建一个频率为 11025 的 GuitarString，它是一个长度为 4 的 ArrayRingBuffer。
         GuitarString s = new GuitarString(11025);
         s.pluck();
 
-        // Record the front four values, ticcing as we go.
+        // 记录前四个值，边走边动。
         double s1 = s.sample();
         s.tic();
         double s2 = s.sample();
-        s.tic(); 
+        s.tic();
         double s3 = s.sample();
         s.tic();
         double s4 = s.sample();
 
-        // If we tic once more, it should be equal to 0.996*0.5*(s1 + s2)
+        // 如果我们再抽一次，它应该等于 0.996*0.5*（s1 + s2）
         s.tic();
 
         double s5 = s.sample();
         double expected = 0.996 * 0.5 * (s1 + s2);
 
-        // Check that new sample is correct, using tolerance of 0.001.
-        // See JUnit documentation for a description of how tolerances work
-        // for assertEquals(double, double)
+        // 使用容差 0.001 检查新样品是否正确。
+        // 有关 assertEquals（double， double） 容差如何工作的描述，请参阅 JUnit 文档
         assertEquals(expected, s5, 0.001);
 
     }
-*/
 
-    /** Calls tests for GuitarString. */
+    /**
+     * Calls tests for GuitarString.
+     */
     public static void main(String[] args) {
         jh61b.junit.textui.runClasses(TestGuitarString.class);
     }

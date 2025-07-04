@@ -5,8 +5,8 @@ import java.util.Base64;
 import java.util.zip.GZIPInputStream;
 
 /**
- * This code does some stuff. Run it (with sound on!) to find out what stuff it does!
- * Requires completion of CS 61B Homework 1.
+ * 此代码执行一些工作。运行它 （打开声音！） 看看它有什么作用！
+ * 要求完成 CS 61B 家庭作业 1。
  *
  * @author Eli Lipsitz
  */
