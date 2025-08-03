@@ -39,7 +39,8 @@ public class Percolation {
         if (row == 0) {
             wqu.union(xyTo1D(row, col), topSite);
             antiBackwash.union(xyTo1D(row, col), topSite);
-        } else if (row == N - 1) {
+        }
+        if (row == N - 1) {
             wqu.union(xyTo1D(row, col), bottomSite);
         }
 
@@ -92,12 +93,12 @@ public class Percolation {
     }
 
     public static void main(String[] args) {
-        Percolation perc = new Percolation(5);
+        Percolation perc = new Percolation(1);
         perc.open(0, 0);
-        perc.open(1, 0);
-        perc.open(2, 0);
-        perc.open(3, 0);
-        perc.open(4, 0);
+//        perc.open(1, 0);
+//        perc.open(2, 0);
+//        perc.open(3, 0);
+//        perc.open(4, 0);
         perc.percolates();
     }
 

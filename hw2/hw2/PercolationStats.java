@@ -46,14 +46,14 @@ public class PercolationStats {
         double avg = mean();
         double dev = stddev();
 
-        return avg - (CONSTANT * dev * dev / Math.sqrt(T));
+        return avg - (CONSTANT * dev / Math.sqrt(T));
     }
 
     public double confidenceHigh() {
         double avg = mean();
         double dev = stddev();
 
-        return avg + (CONSTANT * dev * dev / Math.sqrt(T));
+        return avg + (CONSTANT * dev / Math.sqrt(T));
     }
 
 }
