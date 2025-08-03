@@ -89,4 +89,14 @@ public class TestBSTMap {
     public static void main(String[] args) {
         jh61b.junit.TestRunner.runTests(TestBSTMap.class);
     }
+
+
+    @Test
+    public void testRemoveRoot() {
+        BSTMap<Integer, Integer> map = new BSTMap<>();
+        map.put(2, 2);
+        map.put(1, 1);
+        map.put(3, 3);
+        map.remove(2);
+    }
 }
