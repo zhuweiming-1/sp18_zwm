@@ -1,5 +1,6 @@
 package lab9;
 
+import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Set;
 
@@ -107,7 +108,18 @@ public class BSTMap<K extends Comparable<K>, V> implements Map61B<K, V> {
     /* Returns a Set view of the keys contained in this map. */
     @Override
     public Set<K> keySet() {
-        throw new UnsupportedOperationException();
+        Set<K> keys = new HashSet<>();
+        keySet(root, keys);
+        return keys;
+    }
+
+    private void keySet(Node p, Set<K> keys) {
+        if (p == null) {
+            return;
+        }
+        keySet(p.left, keys);
+        keys.add(p.key);
+        keySet(p.right, keys);
     }
 
     /**
@@ -117,7 +129,28 @@ public class BSTMap<K extends Comparable<K>, V> implements Map61B<K, V> {
      */
     @Override
     public V remove(K key) {
-        throw new UnsupportedOperationException();
+        if (get(key) == null) {
+            return null;
+        }
+        V value = get(key);
+        root = remove(root, key);
+        size--;
+        return value;
+    }
+
+    public Node remove(Node p, K key) {
+        if (p == null) {
+            return null;
+        }
+        int cmp = key.compareTo(p.key);
+        if (cmp < 0) {
+            p.left = remove(p.left, key);
+        } else if (cmp > 0) {
+            p.right = remove(p.right, key);
+        } else {
+            p = null;
+        }
+        return p;
     }
 
     /**
@@ -127,11 +160,16 @@ public class BSTMap<K extends Comparable<K>, V> implements Map61B<K, V> {
      **/
     @Override
     public V remove(K key, V value) {
-        throw new UnsupportedOperationException();
+        V v = get(key);
+        if (v == null || v != value) {
+            return null;
+        }
+        remove(key);
+        return v;
     }
 
     @Override
     public Iterator<K> iterator() {
-        throw new UnsupportedOperationException();
+        return keySet().iterator();
     }
 }
