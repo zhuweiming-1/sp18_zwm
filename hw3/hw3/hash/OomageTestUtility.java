@@ -1,6 +1,8 @@
 package hw3.hash;
 
-import java.util.*;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class OomageTestUtility {
     public static boolean haveNiceHashCodeSpread(List<Oomage> oomages, int M) {
