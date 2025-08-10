@@ -1,2 +1,5 @@
-package byog.Core;public class Connected {
+package byog.Core;
+
+public class Connected {
+    Position connected;
 }

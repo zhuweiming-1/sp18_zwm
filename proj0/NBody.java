@@ -27,7 +27,7 @@ public class NBody {
 
     public static void main(String[] args) {
         if (args.length < 3) {
-//            System.out.println("参数数量小于3，请重新传参.");
+            System.out.println("参数数量小于3，请重新传参.");
         }
         double T = Double.valueOf(args[0]);
         double dt = Double.valueOf(args[1]);
@@ -37,9 +37,6 @@ public class NBody {
 
         StdDraw.setXscale(-radius, radius);
         StdDraw.setYscale(-radius, radius);
-
-//        StdDraw.picture(0, 0, "images/starfield.jpg");
-
 
         StdDraw.enableDoubleBuffering();
 
