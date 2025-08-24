@@ -6,7 +6,7 @@ public class Board implements WorldState {
     private static final int BLANK = 0;
     private final int[][] board;
     private final int[][] goal;
-    private final int N;
+    private final int size;
 
     /**
      * Constructs a board from an N-by-N array of tiles where tiles[i][j] = tile at row i, column j
@@ -15,20 +15,20 @@ public class Board implements WorldState {
      * @param tiles
      */
     public Board(int[][] tiles) {
-        N = tiles.length;
-        board = new int[N][N];
-        for (int i = 0; i < N; i++) {
-            for (int j = 0; j < N; j++) {
+        size = tiles.length;
+        board = new int[size][size];
+        for (int i = 0; i < size; i++) {
+            for (int j = 0; j < size; j++) {
                 board[i][j] = tiles[i][j];
             }
         }
-        goal = new int[N][N];
-        for (int i = 0; i < N; i++) {
-            for (int j = 0; j < N; j++) {
-                goal[i][j] = i * N + j + 1;
+        goal = new int[size][size];
+        for (int i = 0; i < size; i++) {
+            for (int j = 0; j < size; j++) {
+                goal[i][j] = i * size + j + 1;
             }
         }
-        goal[N - 1][N - 1] = 0;
+        goal[size - 1][size - 1] = 0;
     }
 
     /**
@@ -50,7 +50,7 @@ public class Board implements WorldState {
      * @return
      */
     public int size() {
-        return N;
+        return size;
     }
 
     /**
@@ -127,19 +127,28 @@ public class Board implements WorldState {
         for (int i = 0; i < size(); i++) {
             for (int j = 0; j < size(); j++) {
                 if (board[i][j] != BLANK) {
-                    total += Math.abs(board[i][j] - xyToSeq(i, j));
+                    int[] pos = seqToXy(board[i][j]);
+                    int k = pos[0];
+                    int z = pos[1];
+                    total += Math.abs(i - k) + Math.abs(j - z);
                 }
             }
         }
         return total;
     }
 
-    private int xyToSeq(int i, int j) {
-        return i * size() + j + 1;
+    private int[] seqToXy(int seq) {
+        int[] pos = new int[2];
+        int i = seq / size();
+        int j = seq % size() == 0 ? size() : seq % size();
+        pos[0] = i;
+        pos[1] = j - 1;
+        return pos;
     }
 
     /**
-     * Estimated distance to goal. This method should simply return the results of manhattan() when submitted to Gradescope.
+     * Estimated distance to goal. This method should simply return the results of manhattan()
+     * when submitted to Gradescope.
      * 到目标的估计距离。当提交到 Gradescope 时，此方法应直接返回 manhattan() 的结果。
      *
      * @return
@@ -194,4 +203,8 @@ public class Board implements WorldState {
         return s.toString();
     }
 
+    @Override
+    public int hashCode() {
+        return 0;
+    }
 }
