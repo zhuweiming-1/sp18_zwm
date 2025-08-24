@@ -139,7 +139,7 @@ public class Board implements WorldState {
 
     private int[] seqToXy(int seq) {
         int[] pos = new int[2];
-        int i = seq / size();
+        int i = (seq - 1) / size();
         int j = seq % size() == 0 ? size() : seq % size();
         pos[0] = i;
         pos[1] = j - 1;
