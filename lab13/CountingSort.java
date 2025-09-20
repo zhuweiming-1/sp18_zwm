@@ -1,8 +1,9 @@
+import edu.princeton.cs.algs4.In;
+
 /**
  * Class with 2 ways of doing Counting sort, one naive way and one "better" way
  *
  * @author Akhil Batra, Alexander Hwang
- *
  **/
 public class CountingSort {
     /**
@@ -66,7 +67,33 @@ public class CountingSort {
      * @param arr int array that will be sorted
      */
     public static int[] betterCountingSort(int[] arr) {
-        // TODO make counting sort work with arrays containing negative numbers.
-        return null;
+        int max = Integer.MIN_VALUE;
+        int min = Integer.MAX_VALUE;
+        for (int i : arr) {
+            max = max > i ? max : i;
+            min = min < i ? min : i;
+        }
+
+        // gather all the counts for each value
+        int[] counts = new int[max - min + 1];
+        for (int i : arr) {
+            counts[-min + i]++;
+        }
+
+        int[] starts = new int[max - min + 1];
+        int pos = 0;
+        for (int i = 0; i < starts.length; i += 1) {
+            starts[i] = pos;
+            pos += counts[i];
+        }
+
+        int[] sorted = new int[arr.length];
+        for (int i = 0; i < arr.length; i += 1) {
+            int item = arr[i];
+            int place = starts[-min + item];
+            sorted[place] = item;
+            starts[-min + item] += 1;
+        }
+        return sorted;
     }
 }
