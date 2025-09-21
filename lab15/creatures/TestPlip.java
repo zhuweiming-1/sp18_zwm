@@ -1,16 +1,23 @@
 package creatures;
+
+import org.junit.Assert;
 import org.junit.Test;
+
 import static org.junit.Assert.*;
+
 import java.util.HashMap;
 import java.awt.Color;
+
 import huglife.Direction;
 import huglife.Action;
 import huglife.Occupant;
 import huglife.Impassible;
 import huglife.Empty;
 
-/** Tests the plip class   
- *  @authr FIXME
+/**
+ * Tests the plip class
+ *
+ * @authr FIXME
  */
 
 public class TestPlip {
@@ -36,10 +43,15 @@ public class TestPlip {
 
     @Test
     public void testReplicate() {
+        Plip plip = new Plip(1);
+        Plip baby = plip.replicate();
+        Assert.assertEquals(0.5,plip.energy(),0.001);
+        Assert.assertEquals(0.5,baby.energy(),0.001);
+        Assert.assertNotSame(plip, baby);
 
     }
 
-    //@Test
+    @Test
     public void testChoose() {
         Plip p = new Plip(1.2);
         HashMap<Direction, Occupant> surrounded = new HashMap<Direction, Occupant>();
@@ -54,8 +66,16 @@ public class TestPlip {
 
         Action actual = p.chooseAction(surrounded);
         Action expected = new Action(Action.ActionType.STAY);
-
         assertEquals(expected, actual);
+
+        surrounded.put(Direction.TOP, new Empty());
+        surrounded.put(Direction.BOTTOM, new Impassible());
+        surrounded.put(Direction.LEFT, new Impassible());
+        surrounded.put(Direction.RIGHT, new Impassible());
+        actual = p.chooseAction(surrounded);
+        expected = new Action(Action.ActionType.REPLICATE,Direction.TOP);
+        assertEquals(expected, actual);
+
     }
 
     public static void main(String[] args) {
