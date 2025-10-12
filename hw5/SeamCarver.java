@@ -1,8 +1,5 @@
 
 import edu.princeton.cs.algs4.Picture;
-import edu.princeton.cs.algs4.Stack;
-import edu.princeton.cs.algs4.WhiteFilter;
-
 import java.awt.*;
 
 public class SeamCarver {
